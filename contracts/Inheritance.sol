@@ -153,6 +153,23 @@ contract InheritanceContract is ReentrancyGuard, Ownable {
     }
 
     /**
+     * @dev Force expire a plan for testing purposes
+     * @param owner Address of the plan owner to expire
+     */
+    function forceExpirePlan(address owner) external {
+        require(ownerExists(owner), "Owner does not exist");
+
+        InheritanceConfig storage config = owners[owner];
+        require(!config.shareLocked, "Plan already expired and locked");
+
+        // Set lastReset to a time in the past that would make it expired
+        // We subtract the timeout period plus 1 second from current time
+        config.lastReset = block.timestamp - config.timeoutPeriod - 1;
+
+        emit TimerReset(owner, config.lastReset);
+    }
+
+    /**
      * @dev Lock the per-beneficiary share amount for a specific owner
      * @param owner Address of the plan owner
      */

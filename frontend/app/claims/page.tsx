@@ -63,7 +63,7 @@ const calculateTotalValue = (assets: any[]) => {
   return assets.reduce((total, asset) => total + asset.value, 0)
 }
 
-// Helper function to validate Ethereum address
+// Helper function to validate Rootstock address
 const isValidAddress = (address: string) => {
   return ethers.isAddress(address)
 }
@@ -183,13 +183,13 @@ export default function ClaimsPage() {
         throw new Error("Missing required fields: Please fill in all required fields")
       }
 
-      // Validate Ethereum addresses
+      // Validate Rootstock addresses
       if (!isValidAddress(newClaimForm.deceasedAddress)) {
-        throw new Error("Invalid deceased wallet address: Please enter a valid Ethereum address")
+        throw new Error("Invalid deceased wallet address: Please enter a valid Rootstock address")
       }
 
       if (newClaimForm.claimantAddress && !isValidAddress(newClaimForm.claimantAddress)) {
-        throw new Error("Invalid claimant wallet address: Please enter a valid Ethereum address")
+        throw new Error("Invalid claimant wallet address: Please enter a valid Rootstock address")
       }
 
       // Validate email format
@@ -202,7 +202,7 @@ export default function ClaimsPage() {
 
       // Check if wallet is available
       if (!window.ethereum) {
-        throw new Error("Wallet not found: Please install MetaMask or another Ethereum wallet")
+        throw new Error("Wallet not found: Please install MetaMask or another Rootstock-compatible wallet")
       }
 
       // Connect wallet if not connected

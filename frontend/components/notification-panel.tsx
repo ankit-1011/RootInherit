@@ -41,7 +41,7 @@ export default function NotificationPanel({ onClose }: NotificationPanelProps) {
     {
       id: 4,
       title: "Transaction Completed",
-      message: "Your transaction of 0.5 ETH has been confirmed.",
+      message: "Your transaction of 0.5 tRBTC has been confirmed.",
       time: "3 days ago",
       type: "success",
       read: true,

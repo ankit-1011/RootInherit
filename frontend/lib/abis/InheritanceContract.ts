@@ -687,6 +687,19 @@ export const inheritanceABI = [
         "type": "address"
       }
     ],
+    "name": "forceExpirePlan",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
     "name": "timeRemaining",
     "outputs": [
       {
