@@ -6,6 +6,7 @@ export function Account() {
   const { disconnect } = useDisconnect()
   const { data: ensName } = useEnsName({ address })
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! })
+  console.log("add", address);
 
   return (
     <div>
